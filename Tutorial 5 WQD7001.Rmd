@@ -1,0 +1,92 @@
+---
+title: "Tutorial 5 EDA"
+author: "Nur Aliah Hasshim"
+date: "4/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exploring Data with R
+
+
+### 1. See basic descriptive statistics
+```{r}
+summary(attitude)
+```
+
+#### a) The differences between (attitude[3]) and attitude$learning)
+```{r}
+attitude[3] #returns third column values in matrix form
+attitude$learning #returns "learning" column values in list form
+```
+
+### 2. List of variables in the dataset
+```{r}
+colnames(attitude)
+```
+
+### 3. Number of rows in a dataset
+```{r}
+nrow(attitude)
+```
+
+### 4. Number of columns in dataset
+
+```{r}
+ncol(attitude)
+```
+
+### 5. Structure of dataset
+```{r}
+str(attitude)
+```
+
+### 6. First 6 rows of dataset by default
+```{r}
+head(attitude)
+```
+### 7. First 15 rows of dataset
+```{r}
+head(attitude,15)
+```
+### 8. All rows of dataset but the last row
+```{r}
+head(attitude,-1)
+```
+### 9. Last 6 rows of dataset by default
+```{r}
+tail(attitude)
+```
+### 10. Last 12 rows of dataset
+```{r}
+tail(attitude, 12)
+```
+### 11. All rows of dataset but the first row
+```{r}
+tail(attitude,-1)
+```
+### 12. Number of missing values
+```{r}
+sum(is.na(attitude))
+```
+### 13. Number of missing values in "Learning" variables
+```{r}
+sum(is.na(attitude$learning))
+```
+### 14. Simple graph on a screen device
+```{r}
+hist(attitude$learning, col = "blue")
+```
+
+### 15. Graph on a file device (Pdf file)
+
+```{r}
+pdf(file="myplot.pdf")
+with(attitude, plot(privileges, learning))
+abline(h = 12, lwd = 2, lty = 2)
+title(main = "Learning Attitude")
+dev.off()
+```
